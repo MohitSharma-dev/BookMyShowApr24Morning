@@ -52,3 +52,8 @@ public class Booking extends BaseModel {
 // OneToMany , ManyToOne : Do we create a new table ? No : when app run successfully, separate tables will be created
 // How to avoid this ?
 
+
+// Sign Up
+// email password
+
+// Controller : UserController

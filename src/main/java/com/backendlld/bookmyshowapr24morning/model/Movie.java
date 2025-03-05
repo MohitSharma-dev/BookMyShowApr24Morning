@@ -1,10 +1,11 @@
 package com.backendlld.bookmyshowapr24morning.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
 
 import java.awt.print.Book;
 import java.util.List;
@@ -19,5 +20,14 @@ public class Movie extends BaseModel {
     private String genre;
     private String rating;
     private String description;
+    @Enumerated(EnumType.ORDINAL)
+    @ElementCollection
     private List<Feature> movieFeatures;
 }
+
+// Ordinal vs String
+
+// Movie
+// Feature : 0,1,3
+
+//
