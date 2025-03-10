@@ -20,7 +20,7 @@ public class User extends BaseModel{
     }
 
     public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
+        this.bookings.addAll(bookings);
     }
 
     public String getEmail() {
