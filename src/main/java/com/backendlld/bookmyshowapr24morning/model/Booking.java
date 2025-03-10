@@ -11,10 +11,48 @@ import java.awt.print.Book;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity
 public class Booking extends BaseModel {
+    public Date getBookingDate() {
+        return bookingDate;
+    }
+
+    public void setBookingDate(Date bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+
+    public Show getShow() {
+        return show;
+    }
+
+    public void setShow(Show show) {
+        this.show = show;
+    }
+
+    public List<ShowSeat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<ShowSeat> seats) {
+        this.seats = seats;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
+
     private Date bookingDate;
     @ManyToOne
     private Show show;
