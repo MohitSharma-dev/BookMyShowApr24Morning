@@ -9,10 +9,56 @@ import lombok.Setter;
 import java.util.Date;
 import java.util.List;
 
-@Getter
-@Setter
 @Entity(name = "shows")
 public class Show extends BaseModel{
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Movie getMovie() {
+        return movie;
+    }
+
+    public void setMovie(Movie movie) {
+        this.movie = movie;
+    }
+
+    public Screen getScreen() {
+        return screen;
+    }
+
+    public void setScreen(Screen screen) {
+        this.screen = screen;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public List<ShowSeat> getShowSeats() {
+        return showSeats;
+    }
+
+    public void setShowSeats(List<ShowSeat> showSeats) {
+        this.showSeats = showSeats;
+    }
+
+    public List<ShowSeatType> getShowSeatTypes() {
+        return showSeatTypes;
+    }
+
+    public void setShowSeatTypes(List<ShowSeatType> showSeatTypes) {
+        this.showSeatTypes = showSeatTypes;
+    }
+
     private Date date;
     @ManyToOne
     private Movie movie;
