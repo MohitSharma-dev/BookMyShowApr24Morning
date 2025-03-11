@@ -1,30 +1,55 @@
 package com.backendlld.bookmyshowapr24morning;
 
+import com.backendlld.bookmyshowapr24morning.controller.BookingController;
 import com.backendlld.bookmyshowapr24morning.controller.UserController;
-import com.backendlld.bookmyshowapr24morning.dto.ResponseStatus;
-import com.backendlld.bookmyshowapr24morning.dto.SignUpRequestDTO;
-import com.backendlld.bookmyshowapr24morning.dto.SignUpResponseDTO;
+import com.backendlld.bookmyshowapr24morning.dto.*;
 import com.backendlld.bookmyshowapr24morning.model.BaseModel;
+import com.backendlld.bookmyshowapr24morning.model.Booking;
+import com.backendlld.bookmyshowapr24morning.model.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @EnableJpaAuditing
 @SpringBootApplication
 public class BookMyShowApr24MorningApplication implements CommandLineRunner {
     @Autowired
     private UserController userController;
+    @Autowired
+    private BookingController bookingController;
+
     @Override
     public void run(String... args) throws Exception {
         SignUpRequestDTO request = new SignUpRequestDTO();
-        request.setUsername("Rohit Sharma");
-        request.setPassword("Mohit Sharma");
-        request.setEmail("rohitsharma@gmail.com");
 
+        /*request.setUsername("Rohit Sharma");
+        request.setPassword("Mohit Sharma");
+        request.setEmail("rohitsharma@gmail.com");*/
+
+        //SignUp-flow
+        /*request.setUsername("puneet2");
+        request.setPassword("password2");
+        request.setEmail("puneet2@hotmail.com");
         SignUpResponseDTO responseDTO = userController.signUp(request);
-        System.out.println(responseDTO.getMessage());
+        System.out.println(responseDTO.getMessage());*/
+
+        //Booking-flow
+        /*BookingRequestDTO requestDTO = new BookingRequestDTO();
+        long showId=1;
+        List<Long> showSeatIds = new ArrayList<>();
+        showSeatIds.add(1l);
+        long userId=5;
+        requestDTO.setShowId(showId);
+        requestDTO.setUserId(userId);
+        requestDTO.setShowSeatIds(showSeatIds);
+
+        BookingResponseDTO bookingResponseDTO = bookingController.bookShow(requestDTO);
+        System.out.println(bookingResponseDTO.getBookingId());*/
     }
 
     public static void main(String[] args) {
@@ -32,6 +57,7 @@ public class BookMyShowApr24MorningApplication implements CommandLineRunner {
 //        baseModel.getId();
         SpringApplication.run(BookMyShowApr24MorningApplication.class, args);
     }
+
 
 }
 
