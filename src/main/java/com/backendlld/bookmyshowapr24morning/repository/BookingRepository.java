@@ -9,6 +9,6 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 
     @Override
     //<S extends Booking> S saveAndFlush(S entity);
-    Booking save(Booking booking);
+    Booking save(Booking booking); // Ask Mohit, is it fine?
 
 }

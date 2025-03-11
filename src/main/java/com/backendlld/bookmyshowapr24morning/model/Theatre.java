@@ -15,4 +15,30 @@ public class Theatre extends BaseModel{
     private String theatreAddress;
     @OneToMany
     private List<Screen> screens;
+
+    //Getters and Setters:
+
+    public String getTheatreName() {
+        return theatreName;
+    }
+
+    public void setTheatreName(String theatreName) {
+        this.theatreName = theatreName;
+    }
+
+    public String getTheatreAddress() {
+        return theatreAddress;
+    }
+
+    public void setTheatreAddress(String theatreAddress) {
+        this.theatreAddress = theatreAddress;
+    }
+
+    public List<Screen> getScreens() {
+        return screens;
+    }
+
+    public void setScreens(List<Screen> screens) {
+        this.screens = screens;
+    }
 }

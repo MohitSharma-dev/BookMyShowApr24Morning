@@ -17,6 +17,32 @@ public class ShowSeat extends BaseModel {
     private Seat seat;
     @Enumerated(EnumType.ORDINAL)
     private ShowSeatStatus status;
+
+    //Getters and Setters:
+
+    public Show getShow() {
+        return show;
+    }
+
+    public void setShow(Show show) {
+        this.show = show;
+    }
+
+    public Seat getSeat() {
+        return seat;
+    }
+
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public ShowSeatStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ShowSeatStatus status) {
+        this.status = status;
+    }
 }
 
 

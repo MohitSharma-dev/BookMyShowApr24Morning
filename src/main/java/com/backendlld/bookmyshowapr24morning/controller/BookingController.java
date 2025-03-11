@@ -3,8 +3,9 @@ package com.backendlld.bookmyshowapr24morning.controller;
 import com.backendlld.bookmyshowapr24morning.dto.BookingRequestDTO;
 import com.backendlld.bookmyshowapr24morning.dto.BookingResponseDTO;
 import com.backendlld.bookmyshowapr24morning.dto.ResponseStatus;
-import com.backendlld.bookmyshowapr24morning.excptions.SeatsNotAvailableExcpetion;
+import com.backendlld.bookmyshowapr24morning.excptions.SeatsNotAvailableException;
 import com.backendlld.bookmyshowapr24morning.excptions.ShowNotAvailableException;
+import com.backendlld.bookmyshowapr24morning.excptions.ShowSeatNotFoundException;
 import com.backendlld.bookmyshowapr24morning.excptions.UserNotFoundException;
 import com.backendlld.bookmyshowapr24morning.model.Booking;
 import com.backendlld.bookmyshowapr24morning.model.Payment;
@@ -39,11 +40,13 @@ public class BookingController {
             bookingResponseDTO.setMovieTitle(booking.getShow().getMovie().getTitle());//pnp..this is because i want to send specific data for front end, so they can share it user and print it in the ticket.
             bookingResponseDTO.setBookingStatus(booking.getBookingStatus());
             bookingResponseDTO.setResponseStatus(ResponseStatus.SUCCESS);
-        } catch(SeatsNotAvailableExcpetion e){
+        } catch(SeatsNotAvailableException e){
             bookingResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
         } catch (ShowNotAvailableException e) {
             bookingResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
         } catch (UserNotFoundException e) {
+            bookingResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
+        } catch (ShowSeatNotFoundException e) {
             bookingResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
         }
         return bookingResponseDTO;

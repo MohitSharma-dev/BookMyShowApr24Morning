@@ -20,5 +20,61 @@ public class BookingResponseDTO {
     String movieTitle;
     BookingStatus bookingStatus;
     ResponseStatus responseStatus;
+
+    public long getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(long bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public List<Long> getBookedShowSeats() {
+        return bookedShowSeats;
+    }
+
+    public void setBookedShowSeats(List<Long> bookedShowSeats) {
+        this.bookedShowSeats = bookedShowSeats;
+    }
+
+    public long getShowId() {
+        return showId;
+    }
+
+    public void setShowId(long showId) {
+        this.showId = showId;
+    }
+
+    public String getMovieTitle() {
+        return movieTitle;
+    }
+
+    public void setMovieTitle(String movieTitle) {
+        this.movieTitle = movieTitle;
+    }
+
+    public BookingStatus getBookingStatus() {
+        return bookingStatus;
+    }
+
+    public void setBookingStatus(BookingStatus bookingStatus) {
+        this.bookingStatus = bookingStatus;
+    }
+
+    public ResponseStatus getResponseStatus() {
+        return responseStatus;
+    }
+
+    public void setResponseStatus(ResponseStatus responseStatus) {
+        this.responseStatus = responseStatus;
+    }
 }
 //pnp.Q..to Mohit...why we return here just Ids and not the object reference.
