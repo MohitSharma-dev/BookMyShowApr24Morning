@@ -25,6 +25,8 @@ public class BookMyShowApr24MorningApplication implements CommandLineRunner {
 
         SignUpResponseDTO responseDTO = userController.signUp(request);
         System.out.println(responseDTO.getMessage());
+
+        // Cannot test with db, fixing issues with mysql.
     }
 
     public static void main(String[] args) {
