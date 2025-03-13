@@ -10,9 +10,10 @@ import com.backendlld.bookmyshowapr24morning.repository.BookingRepository;
 import com.backendlld.bookmyshowapr24morning.repository.ShowRepository;
 import com.backendlld.bookmyshowapr24morning.repository.ShowSeatRepository;
 import com.backendlld.bookmyshowapr24morning.repository.UserRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -69,7 +70,7 @@ public class BookingServiceImpl implements BookingService{
         bookingDetails.setAmount(payableAmt);
         return bookingDetails;
     }
-    @Transactional
+    @Transactional(isolation = Isolation.SERIALIZABLE)
     private void blockShowSeats(List<ShowSeat> showSeats) throws SeatsNotAvailableException {
         for(ShowSeat showSeat:showSeats){
             Date bookedDate;
