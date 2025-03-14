@@ -15,10 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class BookingServiceImpl implements BookingService{
@@ -53,11 +51,7 @@ public class BookingServiceImpl implements BookingService{
         Booking booking=new Booking();
         blockShowSeats(showSeats);
         booking.setBookingDate(new Date());
-        List<ShowSeatType> showSeatTypes=show.getShowSeatTypes();
-        double payableAmt=0;
-        for(ShowSeatType showSeatType:showSeatTypes){
-            payableAmt+= showSeatType.getPrice();
-        }
+        double payableAmt=calculateTicketsPrice(showSeats,show.getShowSeatTypes());
         booking.setShow(show);
         booking.setUser(user);
         booking.setSeats(showSeats);
@@ -91,6 +85,15 @@ public class BookingServiceImpl implements BookingService{
             showSeat.setUpdatedAt(bookedDate);
         }
         showSeatRepository.saveAll(showSeats);
+    }
+    private double calculateTicketsPrice(List<ShowSeat> showSeats,List<ShowSeatType> showSeatTypes){
+        Map<SeatType,Double> seatTypePriceMap=showSeatTypes.stream().collect(Collectors.toMap(showSeatType -> showSeatType.getSeatType(),
+                showSeatType -> showSeatType.getPrice()));
+        double amountToBePaid=0;
+        for(ShowSeat showSeat:showSeats){
+            amountToBePaid+=(seatTypePriceMap.get(showSeat.getSeat().getSeatType()));
+        }
+        return amountToBePaid;
     }
 }
 
