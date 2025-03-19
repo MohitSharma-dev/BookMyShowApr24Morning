@@ -1,5 +1,8 @@
 package com.backendlld.bookmyshowapr24morning;
 
+import com.backendlld.bookmyshowapr24morning.command.Command;
+import com.backendlld.bookmyshowapr24morning.command.CommandExecutor;
+import com.backendlld.bookmyshowapr24morning.command.SignUpUserCommand;
 import com.backendlld.bookmyshowapr24morning.controller.UserController;
 import com.backendlld.bookmyshowapr24morning.dto.ResponseStatus;
 import com.backendlld.bookmyshowapr24morning.dto.SignUpRequestDTO;
@@ -11,13 +14,23 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 @EnableJpaAuditing
 @SpringBootApplication
 public class BookMyShowApr24MorningApplication implements CommandLineRunner {
     @Autowired
     private UserController userController;
+    @Autowired
+    private CommandExecutor commandExecutor;
+    private static Scanner scanner = new Scanner(System.in);
+//    private List<Command> commands;
     @Override
     public void run(String... args) throws Exception {
+//        commands = new ArrayList<>();
+//        commands.add(new SignUpUserCommand());
         SignUpRequestDTO request = new SignUpRequestDTO();
         request.setUsername("Rohit Sharma");
         request.setPassword("Mohit Sharma");
@@ -25,6 +38,31 @@ public class BookMyShowApr24MorningApplication implements CommandLineRunner {
 
         SignUpResponseDTO responseDTO = userController.signUp(request);
         System.out.println(responseDTO.getMessage());
+
+        System.out.println("Please enter the command : ");
+        String input = scanner.nextLine();
+        String[] words = input.split(" ");
+        commandExecutor.execute(input);
+//
+//        for(Command command : commands) {
+//            if(command.matches(input)){
+//                command.execute(input);
+//            }
+//        }
+//        if(words[0].equals("SignUp")){
+//            // parse the arguments
+//            if(words.length != 4){
+//                //
+//            }
+//            // call the required controller
+//        } else if (words[0].equals("GetMovies")){
+//
+//        } else if (words[0].equals("BookTicket")){
+//
+//        }
+
+
+        // Command : match , execute
     }
 
     public static void main(String[] args) {
@@ -64,3 +102,15 @@ public class BookMyShowApr24MorningApplication implements CommandLineRunner {
 
 // Raise a PR
 
+
+// SignUpUser Mohit mohit.sharma@scaler.com password
+
+
+// SettleUpGroup 1
+
+// [Command Name] [arg1] [arg2] [arg3]
+
+// User enters command
+    // match it with some command
+    // accordingly parse the arguments
+    // corresponding controller
