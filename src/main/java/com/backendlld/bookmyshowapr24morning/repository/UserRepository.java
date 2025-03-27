@@ -14,6 +14,10 @@ import java.util.function.Function;
 public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByEmail(String email);
 
+    //@Override
+    //<S extends User> S save(S entity);
+
+    User save(User user);
 }
 // select * from user where email = ?;
 

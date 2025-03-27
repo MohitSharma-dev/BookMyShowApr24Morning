@@ -24,6 +24,8 @@ public class Booking extends BaseModel {
     private User user;
     @OneToMany
     private List<Payment> payments;
+    @ManyToOne
+    BookingStatus bookingStatus;//added booing status for maintaining status of booking.
 }
 
 
